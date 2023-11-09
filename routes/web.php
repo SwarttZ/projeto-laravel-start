@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\LoginController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+//rota direta no arquivo de rotas web.php
+Route::get('/home', function () {
+    return view('login');
 });
+
+Route::get('/home/pasta', function () {
+    return view('exemplo-view-com-pasta.login');
+});
+
+//rota dentro do controller ou seja o controller está controlando a rota conforme manda a psr 4 - 7
+Route::get('/home/com/controller', [LoginController::class, 'index']);
